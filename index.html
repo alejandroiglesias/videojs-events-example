@@ -1,0 +1,44 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Video.js events example</title>
+
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+</head>
+<body>
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+  <div role="main">
+    <video id="my_video_1" class="video-js vjs-default-skin" controls
+      preload="auto" width="640" height="480">
+      <source src="Nikhil Banerjee-BBC performance.webm" type='video/mp4'>
+    </video>
+  </div>
+
+
+  <script src="http://vjs.zencdn.net/c/video.js"></script>
+  <script>
+    _V_("my_video_1").ready(function(){
+      var myPlayer = this;
+
+      myPlayer.addEvent('durationchange', function () {
+        myPlayer.currentTime(56);
+        myPlayer.play();
+      });
+
+      myPlayer.addEvent('timeupdate', function () {
+        if (myPlayer.currentTime() >= 60) {
+          myPlayer.pause();
+        }
+      })
+    });
+  </script>
+</body>
+</html>
